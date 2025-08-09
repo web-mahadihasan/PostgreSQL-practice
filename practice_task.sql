@@ -190,3 +190,38 @@ SELECT
     ORDER BY
         order_month
      
+
+SELECT * FROM employees;
+
+SELECT * FROM departments;
+
+
+-- Retrieve all employees whose salary is gather than the highest salary of the HR departments
+
+SELECT 
+    Max(salary) as highest_salary
+From
+    departments d 
+INNER JOIN 
+    employees e 
+ON 
+    d.department_id = e.department_id
+WHERE 
+    d.department_name = 'HR'
+GROUP BY d.department_id
+
+
+SELECT * FROM employees WHERE salary < (SELECT 
+    Max(salary) as highest_salary
+From
+    departments d 
+INNER JOIN 
+    employees e 
+ON 
+    d.department_id = e.department_id
+WHERE 
+    d.department_name = 'HR'
+GROUP BY d.department_id)
+
+
+SELECT e.employee_name, e.salary, e.hire_date, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.department_id WHERE department_name in (SELECT department_name FROM departments WHERE department_name ILIKE '%R%')
