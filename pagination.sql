@@ -1,5 +1,5 @@
 -- Pagination in sql data base 
-
+-- practace purpose
 
 -- limit use for using limit how much item i want to get, 
 -- and offset use for how much item i want to ignore
